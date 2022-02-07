@@ -1,3 +1,4 @@
+// Création Icone Oeil bleu
 export default `<svg xmlns="http://www.w3.org/2000/svg"
 width="0.244444in" height="0.166667in"
 viewBox="0 0 22 15">

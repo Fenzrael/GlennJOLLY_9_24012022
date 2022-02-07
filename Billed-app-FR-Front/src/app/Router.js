@@ -1,4 +1,6 @@
+// Import données mockées
 import store from "./Store.js"
+// Import Pages et elements de pages
 import Login, { PREVIOUS_LOCATION } from "../containers/Login.js"
 import Bills  from "../containers/Bills.js"
 import NewBill from "../containers/NewBill.js"
@@ -7,10 +9,13 @@ import Dashboard from "../containers/Dashboard.js"
 import BillsUI from "../views/BillsUI.js"
 import DashboardUI from "../views/DashboardUI.js"
 
+// import des routes
 import { ROUTES, ROUTES_PATH } from "../constants/routes.js"
 
 export default () => {
+  // Variable DOM id root
   const rootDiv = document.getElementById('root')
+  // Chemin par defaut
   rootDiv.innerHTML = ROUTES({ pathname: window.location.pathname })
 
   window.onNavigate = (pathname) => {
@@ -20,16 +25,13 @@ export default () => {
       pathname,
       window.location.origin + pathname
     )
+    // Condition selon le chemin
     if (pathname === ROUTES_PATH['Login']) {
       rootDiv.innerHTML = ROUTES({ pathname })
       document.body.style.backgroundColor="#0E5AE5"
       new Login({ document, localStorage, onNavigate, PREVIOUS_LOCATION, store })
     } else if (pathname === ROUTES_PATH['Bills']) {
-      rootDiv.innerHTML = ROUTES({ pathname, loading: true })
-      const divIcon1 = document.getElementById('layout-icon1')
-      const divIcon2 = document.getElementById('layout-icon2')
-      divIcon1.classList.add('active-icon')
-      divIcon2.classList.remove('active-icon')
+     
       const bills = new Bills({ document, onNavigate, store, localStorage  })
       bills.getBills().then(data => {
         rootDiv.innerHTML = BillsUI({ data })
@@ -76,11 +78,6 @@ export default () => {
     document.body.style.backgroundColor="#0E5AE5"
   } else if (window.location.hash !== "") {
     if (window.location.hash === ROUTES_PATH['Bills']) {
-      rootDiv.innerHTML = ROUTES({ pathname: window.location.hash, loading: true })
-      const divIcon1 = document.getElementById('layout-icon1')
-      const divIcon2 = document.getElementById('layout-icon2')
-      divIcon1.classList.add('active-icon')
-      divIcon2.classList.remove('active-icon')
       const bills = new Bills({ document, onNavigate, store, localStorage  })
       bills.getBills().then(data => {
         rootDiv.innerHTML = BillsUI({ data })

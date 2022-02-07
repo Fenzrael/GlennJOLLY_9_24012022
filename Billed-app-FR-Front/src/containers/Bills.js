@@ -15,11 +15,13 @@ export default class {
     })
     new Logout({ document, localStorage, onNavigate })
   }
-
+  
+   // Fonction evenement clic sur nouvelle note de frais
   handleClickNewBill = () => {
     this.onNavigate(ROUTES_PATH['NewBill'])
   }
 
+  // Implémentation des modifications sur modal lorsque l'on clique sur l'oeil bleu
   handleClickIconEye = (icon) => {
     const billUrl = icon.getAttribute("data-bill-url")
     const imgWidth = Math.floor($('#modaleFile').width() * 0.5)

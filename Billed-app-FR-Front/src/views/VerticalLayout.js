@@ -1,7 +1,9 @@
+// Import des icones de la barre de navigation gauche sur la page des employés
 import WindowIcon from "../assets/svg/window.js"
 import MailIcon from "../assets/svg/mail.js"
 import DisconnectIcon from "../assets/svg/disconnect.js"
 
+// Création de la barre de navigation gauche sur la page des employés
 export default (height) => {
     let user;
     user = JSON.parse(localStorage.getItem('user'))

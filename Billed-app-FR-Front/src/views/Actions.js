@@ -1,6 +1,8 @@
+// Import Icones
 import eyeBlueIcon from "../assets/svg/eye_blue.js"
 import downloadBlueIcon from "../assets/svg/download_blue.js"
 
+// Création icones actives
 export default (billUrl) => {
   return (
     `<div class="icon-actions">

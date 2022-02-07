@@ -1,9 +1,11 @@
+// Import des élements utiles a la page des billets (page des employes)
 import VerticalLayout from './VerticalLayout.js'
 import ErrorPage from "./ErrorPage.js"
 import LoadingPage from "./LoadingPage.js"
 
 import Actions from './Actions.js'
 
+// Implémentation d'un billet (ligne)
 const row = (bill) => {
   return (`
     <tr>
@@ -16,9 +18,10 @@ const row = (bill) => {
         ${Actions(bill.fileUrl)}
       </td>
     </tr>
-    `)
-  }
+  `)
+}
 
+// Implémentation des billets (toutes les lignes)
 const rows = (data) => {
   return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
 }
@@ -29,6 +32,8 @@ export default ({ data: bills, loading, error }) => {
   const billsSorted = bills.sort(antiChrono);               
   //---------------------------------------------------------
   
+  // Implémentation structure modale ouverte lorsque l'on clic sur l'icone oeil bleu
+  // Pour l'activation voir dans "./containers/Bills.js"
   const modal = () => (`
     <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -46,12 +51,14 @@ export default ({ data: bills, loading, error }) => {
     </div>
   `)
 
+  //Si chargement voir LoadingPage.js autrement erreur voir ErrorPage.js
   if (loading) {
     return LoadingPage()
   } else if (error) {
     return ErrorPage(error)
   }
   
+  // Affichage du contenu de la page des billets employes
   return (`
     <div class='layout'>
       ${VerticalLayout(120)}
