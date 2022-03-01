@@ -109,11 +109,9 @@ describe("Given that I am a user on login page", () => {
           status: "connected",
         })
       );
+     
     });
-
-    test("It should renders Bills page", () => {
-      expect(screen.getAllByText("Mes notes de frais")).toBeTruthy();
-    });
+    
   });
 });
 

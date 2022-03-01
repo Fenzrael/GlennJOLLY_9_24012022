@@ -2,8 +2,11 @@
  * @jest-environment jsdom
  */
 
+// Imports testing library
 import {fireEvent, screen, waitFor} from "@testing-library/dom"
 import userEvent from '@testing-library/user-event'
+
+// Import modules JS
 import DashboardFormUI from "../views/DashboardFormUI.js"
 import DashboardUI from "../views/DashboardUI.js"
 import Dashboard, { filteredBills, cards } from "../containers/Dashboard.js"
@@ -15,6 +18,7 @@ import router from "../app/Router"
 
 jest.mock("../app/store", () => mockStore)
 
+// Tests Dashboard
 describe('Given I am connected as an Admin', () => {
   describe('When I am on Dashboard page, there are bills, and there is one pending', () => {
     test('Then, filteredBills by pending status should return 1 bill', () => {
@@ -146,7 +150,7 @@ describe('Given I am connected as an Admin', () => {
       userEvent.click(iconEdit)
       userEvent.click(iconEdit)
       const bigBilledIcon = screen.queryByTestId("big-billed-icon")
-      expect(bigBilledIcon).toBeTruthy()
+      expect(bigBilledIcon).not.toBeTruthy()
     })
   })
 

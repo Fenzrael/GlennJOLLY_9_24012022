@@ -19,7 +19,8 @@ export default () => {
   rootDiv.innerHTML = ROUTES({ pathname: window.location.pathname })
 
   window.onNavigate = (pathname) => {
-
+    // Chemin par defaut sans utilisation de fichiers php (backend solide)
+    // window.history.pushState associé a window.history.onpopState
     window.history.pushState(
       {},
       pathname,
@@ -62,6 +63,7 @@ export default () => {
     }
   }
 
+  // Evenement popState declencher par action Utilisateur (ex: cliquer sur le bouton retour ou ici l'icone se deconnecter)
   window.onpopstate = (e) => {
     const user = JSON.parse(localStorage.getItem('user'))
     if (window.location.pathname === "/" && !user) {

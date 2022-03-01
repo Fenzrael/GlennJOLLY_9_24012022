@@ -2,7 +2,10 @@
  * @jest-environment jsdom
  */
 
+// Import Testing library
 import { screen } from "@testing-library/dom"
+
+// Import modules JS
 import DashboardFormUI from "../views/DashboardFormUI.js"
 import { formatDate } from "../app/format.js"
 
